@@ -13,6 +13,9 @@ const ENTRY_POINT_ADDR: u16 = 0x200;
 
 const SPRITE_WIDTH: u16 = 8;
 
+const SOUND_FREQ:u32 = 500;
+const DURATION_IN_MS:u32 = 100;
+
 const FONTSET_SIZE: usize = 80;
 const FONTSET: [u8; FONTSET_SIZE] = [
     0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
@@ -125,6 +128,7 @@ impl Processor {
         if self.sound_timer > 0 {
             if self.sound_timer == 1 {
                 // Implement beep sound
+                actually_beep::beep_with_hz_and_millis(SOUND_FREQ, DURATION_IN_MS);
             }
 
 
